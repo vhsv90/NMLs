@@ -8,7 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MathLibsLogic\MathLibsLogic.csproj" />
+    <Compile Remove="Benchmarking\**" />
+    <Compile Remove="MathLibsLogic\**" />
+    <EmbeddedResource Remove="Benchmarking\**" />
+    <EmbeddedResource Remove="MathLibsLogic\**" />
+    <None Remove="Benchmarking\**" />
+    <None Remove="MathLibsLogic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="MathLibsLogic\MathLibsLogic.csproj" />
   </ItemGroup>
 
 </Project>

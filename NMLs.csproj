@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodingSeb.ExpressionEvaluator" Version="1.4.40" />
-    <PackageReference Include="Microsoft.ClearScript" Version="7.4.5" />
+    <ProjectReference Include="..\MathLibsLogic\MathLibsLogic.csproj" />
   </ItemGroup>
 
 </Project>

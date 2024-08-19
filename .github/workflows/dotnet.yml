@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./NMLs.csproj
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./NMLs.csproj --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal

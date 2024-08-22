@@ -5,9 +5,14 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NMLs", "NMLs.csproj", "{7333F69A-8532-4E5D-86DC-DF1EC04A669E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathLibsLogic", "MathLibsLogic\MathLibsLogic.csproj", "{9EA41183-3780-442D-8C54-10B378C1D047}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathLibsLogic", "MathLibsLogic\MathLibsLogic.csproj", "{9EA41183-3780-442D-8C54-10B378C1D047}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarking", "Benchmarking\Benchmarking.csproj", "{C16828ED-1853-475A-8B0B-C3E5C4490C04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarking", "Benchmarking\Benchmarking.csproj", "{C16828ED-1853-475A-8B0B-C3E5C4490C04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84B6308D-7854-42AE-8AFB-5C5A67B3B128}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

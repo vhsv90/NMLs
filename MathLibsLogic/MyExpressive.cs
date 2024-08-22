@@ -11,3 +11,8 @@ public static class MyExpressive
                 .ToString() ?? "no-results";
     }
 }
+
+// Package: Expressive
+
+// Repository:
+// https://github.com/bijington/expressive

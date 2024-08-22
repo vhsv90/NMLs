@@ -1,5 +1,4 @@
 ﻿using MathLibsLogic;
-using System.Runtime.InteropServices;
 
 namespace NMLs;
 
@@ -8,69 +7,119 @@ class Program
     static void Main(string[] args)
     {
 
-        Console.WriteLine("DotNet Core Console App using some Math Libraries \n \n");
+        do{
+            Console.WriteLine("DotNet Core Console App using some Math Libraries \n \n");
+            Console.WriteLine("Insert 1 to run ExpressionEvaluator mode or Insert 2 to run Multi Lib mode or Ctrl+C to end-process \n");
 
-         //1.ExpressionEvaluator
-         //2.ClearScript
-         //3.Expressive
-         //4.AngouriMath
-         //5.WattleScript
-         //6.DynamicExpresso
-         //7.Jace.Net
-         //8.MoonSharp
-         //9.NLua
-         //10.NCalc
+            var mode = Console.ReadLine();
 
-        var continueEvaluating = false;
+            if (mode.Equals("1"))
+                RunExpressionEvaluator();
+            else if (mode.Equals("2"))
+                RunMultiples();
+            else
+                Console.WriteLine(" -- Invalid option, try again");
+        }
+        while (true);
+    }
+
+    protected static void RunExpressionEvaluator()
+    {
+        char ch;
+        IList<char> chArray = new List<char>();
+        int x;
+        string expressionFromConsole;
+
         do
         {
+            Console.WriteLine("Type/Copy expression to test, and to quit multiline mode type ` \n");
+            do
+            {
+                x = Console.Read();
+                try
+                {
+                    ch = Convert.ToChar(x);
+                    chArray.Add(ch);
+                }
+                catch (OverflowException e)
+                {
+                    Console.WriteLine("{0} Value read = {1}.", e.Message, x);
+                    ch = Char.MinValue;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
 
+            } while (Convert.ToChar(x) != '`');
+
+            // chArray remove the last char, the quit char `
+            chArray.RemoveAt(chArray.Count - 1);
+
+            expressionFromConsole = new string(chArray.ToArray());
+            chArray.Clear();
+
+            var result = MyExpressionEvaluator.RunEvaluation(expressionFromConsole);
+            
+            // TODO: clean this output
+            Console.WriteLine($"The result of expression: \n {expressionFromConsole} is: \n \n {result} \n");
+
+            Console.WriteLine("If you want continue exit press CTRL + C \n \n");
+        } while (true);
+
+    }
+
+    protected static void RunMultiples()
+    {
+        //1.ExpressionEvaluator
+        //2.ClearScript
+        //3.Expressive
+
+        do
+        {
             Console.WriteLine("Type/Copy expression to test");
+
             var expressionFromConsole = Console.ReadLine() ?? "";
 
-            // create switch menu using as option each library
+            Console.WriteLine("");
             Console.WriteLine("""
-                Choose which Math Library to use, using values from 1 to 10
+                Choose which Math Library to use, using values from 1 to 3
 
-                1.ExpressionEvaluator
-                2.ClearScript
-                3.Expressive
-                4.AngouriMath
-                5.WattleScript
-                6.DynamicExpresso
-                7.Jace.Net
-                8.MoonSharp
-                9.NLua
-                10.NCalc
+                1.      ExpressionEvaluator
+                1.2     ExpressionEvaluator with prebuilt configuration
+                2.      ClearScript
+                3.      Expressive
                 """);
+            Console.WriteLine("");
 
             var option = Console.ReadLine();
             var result = "";
 
-            switch(option)
+            // switch menu using as option library-id
+            switch (option)
             {
                 case "1":
-                    result = MyExpressionEvaluator.RunEvaluation(expressionFromConsole);
+                    Console.WriteLine(MyExpressionEvaluator.RunEvaluation(expressionFromConsole));
+                    break;
+                case "1.2":
+                    Console.WriteLine(MyExpressionEvaluator.RunEvaluationPrebuiltConfiguration(expressionFromConsole));
                     break;
                 case "2":
-                    result = MyClearScript.RunEval(expressionFromConsole);
+                    Console.WriteLine(MyClearScript.RunEval(expressionFromConsole));
                     break;
                 case "3":
-                    result = MyExpressive.RunEvaluate(expressionFromConsole);
+                    Console.WriteLine(MyExpressive.RunEvaluate(expressionFromConsole)); 
                     break;
                 default:
                     Console.WriteLine("no valid option selected");
                     break;
             }
+                        
+            Console.WriteLine("If you want to exit press CTRL + C \n \n");
 
-            // TODO: clean this output
-            Console.WriteLine($"Using Math Lib with Id:{option} and Expression value '{expressionFromConsole}' has the result: {result}");
-
-            Console.WriteLine("If you want continue evaluating expression insert Y if not insert N to exit");            
-            continueEvaluating = Console.ReadLine().ToUpper() == "Y" ? true: false;
-           
-        } while (continueEvaluating);
+        } while (true);
 
     }
+
 }
 
